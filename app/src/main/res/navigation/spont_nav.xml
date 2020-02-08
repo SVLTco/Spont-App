@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/spont_nav"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.spont.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_friendsList"
+            app:destination="@id/friendsList" />
+        <action
+            android:id="@+id/action_home_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/friendsList"
+        android:name="com.example.spont.FriendsList"
+        android:label="fragment_friends_list"
+        tools:layout="@layout/fragment_friends_list" >
+        <action
+            android:id="@+id/action_friendsList_to_createGroup"
+            app:destination="@id/createGroup" />
+    </fragment>
+    <fragment
+        android:id="@+id/createGroup"
+        android:name="com.example.spont.CreateGroup"
+        android:label="fragment_create_group"
+        tools:layout="@layout/fragment_create_group" />
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.example.spont.MapsActivity"
+        android:label="activity_maps"
+        tools:layout="@layout/activity_maps" />
+</navigation>
