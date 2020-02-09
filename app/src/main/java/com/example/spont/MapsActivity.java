@@ -7,8 +7,6 @@ import androidx.fragment.app.FragmentActivity;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -54,17 +52,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    public void onButton(View view) {
-        currMarker.showInfoWindow();
-    }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         request = new LocationRequest().create();
         request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        request.setInterval(1000);
+        LocationRequest locationRequest = request.setInterval(1000);
         LocationServices.FusedLocationApi.requestLocationUpdates(client, request, this);
-
     }
 
     @Override
@@ -78,9 +72,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng current = new LatLng(lat, lng);
             CameraUpdate update = CameraUpdateFactory.newLatLngZoom(current, 15);
             mMap.animateCamera(update);
-            currMarker = mMap.addMarker(new MarkerOptions().position(current).title("here"));
+            mMap.addMarker(new MarkerOptions().position(current)).showInfoWindow();
 
-            //add bound
+            //add bound 
             LatLng bound1 = new LatLng(lat-0.0045, lng-0.0045); //SW
             LatLng bound2 = new LatLng(lat+0.0045, lng+0.0045); //NE
             fence = new LatLngBounds(bound1, bound2);
@@ -116,8 +110,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMaxZoomPreference(20.0f);
         client.connect();
     }
-
-
 
     /**
     @Override
