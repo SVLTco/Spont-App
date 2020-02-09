@@ -1,19 +1,32 @@
 package com.example.spont;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import android.location.Location;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.FusedLocationProviderClient;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
+        GoogleApiClient.ConnectionCallbacks, LocationListener {
 
     private GoogleMap mMap;
+    GoogleApiClient client;
+    LocationRequest request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +38,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        request = new LocationRequest().create();
+        request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        request.setInterval(1000);
+        LocationServices.FusedLocationApi.requestLocationUpdates(client, request, this);
+
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        if (location == null) {
+            Toast.makeText(getApplicationContext(), "location could not be found", Toast.LENGTH_SHORT);
+        }
+        else {
+            LatLng current = new LatLng(location.getLatitude(), location.getLongitude());
+            CameraUpdate update = CameraUpdateFactory.newLatLngZoom(current, 10);
+            mMap.animateCamera(update);
+            mMap.addMarker(new MarkerOptions().position(current));
+        }
+    }
 
     /**
      * Manipulates the map once available.
@@ -39,11 +78,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        client = new GoogleApiClient.Builder(this).addApi(LocationServices.API)
+                .addConnectionCallbacks(this)
+                .build();
         // Add a marker in Sydney and move the camera
-        LatLng rochester = new LatLng(43, -77);
-        mMap.addMarker(new MarkerOptions().position(rochester).title("Marker in Rochester"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(rochester));
+        //LatLng rochester = new LatLng(43, -77);
+        //mMap.addMarker(new MarkerOptions().position(rochester).title("Marker in Rochester"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(rochester));
         mMap.setMinZoomPreference(14.0f);
         mMap.setMaxZoomPreference(9.0f);
+        client.connect();
     }
 }
