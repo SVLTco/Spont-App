@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -38,6 +40,8 @@ public class Map extends FragmentActivity implements OnMapReadyCallback,
     LocationRequest request;
     Marker currMarker;
     private LatLngBounds fence;
+    EditText input;
+    Button showBtn;
 
 
     @Override
@@ -48,6 +52,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback,
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
     }
 
     @Override
@@ -118,6 +123,10 @@ public class Map extends FragmentActivity implements OnMapReadyCallback,
     public void goToGroups(View view){
         startActivity(new Intent(Map.this, FriendAndGroups.class));
 
+    }
+
+    public void ping(View view) {
+        startActivity(new Intent(Map.this, PingFriendOrGroup.class));
     }
 
 
