@@ -58,9 +58,10 @@
             app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/butLogIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="goToMap"
             android:text="Log In"
             app:layout_constraintTop_toBottomOf="@+id/editText3"
             tools:layout_editor_absoluteX="16dp" />
