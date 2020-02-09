@@ -21,7 +21,8 @@
         <activity android:name=".FriendAndGroups" />
         <activity android:name=".PingFriendOrGroup"> </activity>
         <activity android:name=".AddNewFriend"> </activity>
-        <activity android:name=".Login">
+        <activity android:name=".Login"></activity>
+        <activity android:name=".LoadingScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
