@@ -43,5 +43,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng rochester = new LatLng(43, -77);
         mMap.addMarker(new MarkerOptions().position(rochester).title("Marker in Rochester"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(rochester));
+        mMap.setMinZoomPreference(14.0f);
+        mMap.setMaxZoomPreference(9.0f);
     }
 }
