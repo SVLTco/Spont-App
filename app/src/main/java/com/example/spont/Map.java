@@ -25,7 +25,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
+public class Map extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks, LocationListener {
         //GoogleMap.OnMapClickListener,
         //GoogleMap.OnMarkerClickListener {

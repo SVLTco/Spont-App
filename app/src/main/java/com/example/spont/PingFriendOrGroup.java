@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class FriendAndGroupsViewActivity extends AppCompatActivity {
+public class PingFriendOrGroup extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friend_and_groups_view);
+        setContentView(R.layout.activity_ping_friend_or_group);
     }
 }
