@@ -1,3 +1,6 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="title_padding_left">0</dimen>
+    <dimen name="title_padding_right">0</dimen>
+    <dimen name="title_padding_top">0</dimen>
+    <dimen name="tool_bar_height">88dp</dimen>
 </resources>
