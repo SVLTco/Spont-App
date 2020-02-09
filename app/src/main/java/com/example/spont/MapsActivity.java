@@ -52,13 +52,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         request = new LocationRequest().create();
         request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        request.setInterval(1000);
+        LocationRequest locationRequest = request.setInterval(1000);
         LocationServices.FusedLocationApi.requestLocationUpdates(client, request, this);
-
     }
 
     @Override
