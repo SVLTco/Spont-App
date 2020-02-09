@@ -1,10 +1,12 @@
 package com.example.spont;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
 import android.location.Location;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -16,6 +18,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationRequest;
@@ -23,10 +27,15 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks, LocationListener {
+        //GoogleMap.OnMapClickListener,
+        //GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
     GoogleApiClient client;
     LocationRequest request;
+    Marker currMarker;
+    private LatLngBounds fence;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +67,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Toast.makeText(getApplicationContext(), "location could not be found", Toast.LENGTH_SHORT);
         }
         else {
-            LatLng current = new LatLng(location.getLatitude(), location.getLongitude());
-            CameraUpdate update = CameraUpdateFactory.newLatLngZoom(current, 10);
+            double lat = location.getLatitude();
+            double lng = location.getLongitude();
+            LatLng current = new LatLng(lat, lng);
+            CameraUpdate update = CameraUpdateFactory.newLatLngZoom(current, 15);
             mMap.animateCamera(update);
-            mMap.addMarker(new MarkerOptions().position(current));
+            mMap.addMarker(new MarkerOptions().position(current)).showInfoWindow();
+
+            //add bound 
+            LatLng bound1 = new LatLng(lat-0.0045, lng-0.0045); //SW
+            LatLng bound2 = new LatLng(lat+0.0045, lng+0.0045); //NE
+            fence = new LatLngBounds(bound1, bound2);
+            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(fence, 0));
+
         }
     }
 
@@ -78,6 +96,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        //mMap.setOnMapClickListener(this);
+        //mMap.setOnMarkerClickListener(this);
+
         client = new GoogleApiClient.Builder(this).addApi(LocationServices.API)
                 .addConnectionCallbacks(this)
                 .build();
@@ -85,8 +106,41 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //LatLng rochester = new LatLng(43, -77);
         //mMap.addMarker(new MarkerOptions().position(rochester).title("Marker in Rochester"));
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(rochester));
-        mMap.setMinZoomPreference(14.0f);
-        mMap.setMaxZoomPreference(9.0f);
+        mMap.setMinZoomPreference(15.0f);
+        mMap.setMaxZoomPreference(20.0f);
         client.connect();
     }
+
+    /**
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+        markerForGeofence(latLng);
+
+    }
+
+    private void markerForGeofence(LatLng latLng) {
+        MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Geofence Marker");
+
+        if (markerOptions != null) {
+
+            if (currMarker != null) {
+                currMarker.remove();
+            }
+
+            currMarker = mMap.addMarker(markerOptions);
+        }
+
+    }
+
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        return false;
+    }
+    **/
 }
