@@ -14,11 +14,11 @@ public class PingFriendOrGroup extends AppCompatActivity {
         setContentView(R.layout.activity_ping_friend_or_group);
     }
 
-    public void goToFriend(View view) {
-        startActivity(new Intent(PingFriendOrGroup.this, SelectFriend.class));
+    public void pingFriend( View view ) {
+        startActivity(new Intent(PingFriendOrGroup.this, Map.class));
     }
 
-    public void goToGroup(View view) {
-        startActivity(new Intent(PingFriendOrGroup.this, SelectGroup.class));
+    public void pingGroup( View view ) {
+        startActivity(new Intent(PingFriendOrGroup.this, Map.class));
     }
 }
