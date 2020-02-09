@@ -12,6 +12,13 @@
     <string name="title_ping_friend_or_group">Friend or Group</string>
     <string name="title_sign_up">Sign Up</string>
 
+    <!-- User Input Stuff -->
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+
+
+
     <!-- IDs -->
 
 
