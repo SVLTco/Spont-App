@@ -76,6 +76,7 @@
                     android:id="@+id/button"
                     android:layout_width="174dp"
                     android:layout_height="wrap_content"
+                    android:onClick="goToMap"
                     android:text="Log In" />
 
                 <Button
