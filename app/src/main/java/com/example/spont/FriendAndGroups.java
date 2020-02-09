@@ -1,8 +1,10 @@
 package com.example.spont;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 public class FriendAndGroups extends AppCompatActivity {
 
@@ -10,5 +12,12 @@ public class FriendAndGroups extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_and_groups);
+    }
+
+    public void onButton(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("title");
+        builder.show();
+
     }
 }
