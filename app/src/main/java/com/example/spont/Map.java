@@ -73,13 +73,13 @@ public class Map extends FragmentActivity implements OnMapReadyCallback,
             double lat = location.getLatitude();
             double lng = location.getLongitude();
             LatLng current = new LatLng(lat, lng);
-            CameraUpdate update = CameraUpdateFactory.newLatLngZoom(current, 15);
+            CameraUpdate update = CameraUpdateFactory.newLatLngZoom(current, 22);
             mMap.animateCamera(update);
             mMap.addMarker(new MarkerOptions().position(current)).showInfoWindow();
 
             //add bound 
-            LatLng bound1 = new LatLng(lat-0.0045, lng-0.0045); //SW
-            LatLng bound2 = new LatLng(lat+0.0045, lng+0.0045); //NE
+            LatLng bound1 = new LatLng(lat-0.0043, lng-0.0043); //SW
+            LatLng bound2 = new LatLng(lat+0.0043, lng+0.0043); //NE
             fence = new LatLngBounds(bound1, bound2);
             mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(fence, 0));
 
@@ -109,8 +109,8 @@ public class Map extends FragmentActivity implements OnMapReadyCallback,
         //LatLng rochester = new LatLng(43, -77);
         //mMap.addMarker(new MarkerOptions().position(rochester).title("Marker in Rochester"));
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(rochester));
-        mMap.setMinZoomPreference(15.0f);
-        mMap.setMaxZoomPreference(20.0f);
+        mMap.setMinZoomPreference(18.0f);
+        mMap.setMaxZoomPreference(22.0f);
         client.connect();
     }
 
