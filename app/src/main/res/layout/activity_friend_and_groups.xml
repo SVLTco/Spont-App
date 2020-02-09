@@ -158,6 +158,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
+        android:onClick="makeGroup"
         android:text="Make Group"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar4"
         app:layout_constraintStart_toStartOf="parent"

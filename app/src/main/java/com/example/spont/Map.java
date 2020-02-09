@@ -129,6 +129,10 @@ public class Map extends FragmentActivity implements OnMapReadyCallback,
         startActivity(new Intent(Map.this, PingFriendOrGroup.class));
     }
 
+    public void addFriend(View view) {
+        startActivity(new Intent(Map.this, AddNewFriend.class));
+    }
+
 
     /**
     @Override
