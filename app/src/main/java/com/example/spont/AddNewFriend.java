@@ -11,4 +11,8 @@ public class AddNewFriend extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_friend);
     }
+
+    // TODO: Button to Query Database to Find User
 }
+
+
