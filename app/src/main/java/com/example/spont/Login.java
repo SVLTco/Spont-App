@@ -17,4 +17,8 @@ public class Login extends AppCompatActivity {
     public void goToMap(View view) {
         startActivity(new Intent(Login.this, Map.class));
     }
+
+    public void goToSignUp(View view) {
+        startActivity(new Intent(Login.this, SignUp.class));
+    }
 }

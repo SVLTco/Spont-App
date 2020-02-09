@@ -14,10 +14,4 @@ public class FriendAndGroups extends AppCompatActivity {
         setContentView(R.layout.activity_friend_and_groups);
     }
 
-    public void onButton(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("title");
-        builder.show();
-
-    }
 }

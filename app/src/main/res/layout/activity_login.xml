@@ -84,6 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="goToSignUp"
                     android:text="@string/title_sign_up" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
