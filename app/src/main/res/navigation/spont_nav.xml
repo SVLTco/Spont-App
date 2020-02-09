@@ -20,8 +20,7 @@
     <fragment
         android:id="@+id/friendsList"
         android:name="com.example.spont.FriendsList"
-        android:label="fragment_friends_list"
-        tools:layout="@layout/fragment_friends_list" >
+        android:label="fragment_friends_list">
         <action
             android:id="@+id/action_friendsList_to_createGroup"
             app:destination="@id/createGroup" />
