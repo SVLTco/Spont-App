@@ -4,9 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -110,6 +113,13 @@ public class Map extends FragmentActivity implements OnMapReadyCallback,
         mMap.setMaxZoomPreference(20.0f);
         client.connect();
     }
+
+
+    public void goToGroups(View view){
+        startActivity(new Intent(Map.this, FriendAndGroups.class));
+
+    }
+
 
     /**
     @Override
