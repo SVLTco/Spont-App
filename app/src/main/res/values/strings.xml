@@ -2,13 +2,16 @@
 
     <string name="app_name">Spont</string>
 
-    <!-- TITLES -->
-    <string name="title_activity_maps">Map</string>
-    <string name="title_activity_login">Login</string>
+    <!-- Titles -->
     <string name="title_add_new_friend">Add a Friend</string>
+    <string name="title_confirm_delete">Delete?</string>
+    <string name="title_edit_group">Edit Group</string>
+    <string name="title_friends_and_groups">My Network</string>
+    <string name="title_login">Login</string>
+    <string name="title_map">Map</string>
     <string name="title_ping_friend_or_group">Friend or Group</string>
+    <string name="title_sign_in">Sign In</string>
 
+    <!-- Button Names -->
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
