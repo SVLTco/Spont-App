@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_create_group" />
     <activity
         android:id="@+id/mapsActivity"
-        android:name="com.example.spont.MapsActivity"
+        android:name="com.example.spont.Map"
         android:label="activity_maps"
         tools:layout="@layout/activity_maps" />
 </navigation>

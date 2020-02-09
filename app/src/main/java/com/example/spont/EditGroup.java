@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class AreYouSureToDeleteActivity extends AppCompatActivity {
+public class EditGroup extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_are_you_sure_to_delete);
+        setContentView(R.layout.activity_edit_group);
     }
 }
